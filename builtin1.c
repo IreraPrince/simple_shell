@@ -1,24 +1,23 @@
 #include "shell.h"
 
 /**
- * _myhistory - displays the history list, one command by line, preceded
+ * _myhistory - Displays the history list, one command by line, preceded
  *              with line numbers, starting at 0.
- * @info: Structure containing potential arguments. Used to maintain
+ * @ngewe: Structure containing potential arguments.Used to maintain
  *        constant function prototype.
  *  Return: Always 0
  */
-int _myhistory(info_t *info)
+int _myhistory(ngewe_t *ngewe)
 {
-	print_list(info->history);
+	print_list(ngewe->history);
 	return (0);
 }
 
 /**
- * unset_alias - sets alias to string
- * @info: parameter struct
- * @str: the string alias
- *
- * Return: Always 0 on success, 1 on error
+ * unset_alias - Sets alias to string.
+ * @info: parameter struct.
+ * @str: the string alias.
+ * Return: Always 0 on success, 1 on error.
  */
 int unset_alias(info_t *info, char *str)
 {
@@ -39,22 +38,21 @@ int unset_alias(info_t *info, char *str)
 /**
  * set_alias - sets alias to string
  * @info: parameter struct
- * @str: the string alias
- *
+ * @sraw: the string alias
  * Return: Always 0 on success, 1 on error
  */
-int set_alias(info_t *info, char *str)
+int set_alias(info_t *info, char *sraw)
 {
 	char *p;
 
-	p = _strchr(str, '=');
+	p = _strchr(sraw, '=');
 	if (!p)
 		return (1);
 	if (!*++p)
-		return (unset_alias(info, str));
+		return (unset_alias(info, sraw));
 
-	unset_alias(info, str);
-	return (add_node_end(&(info->alias), str, 0) == NULL);
+	unset_alias(info, sraw);
+	return (add_node_end(&(info->alias), sraw, 0) == NULL);
 }
 
 /**

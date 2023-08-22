@@ -29,25 +29,25 @@ int _erratoi(char *s)
 }
 
 /**
- * print_error - prints an error message
- * @info: the parameter & return info struct
- * @estr: string containing specified error type
+ * print_error - Prints an error message.
+ * @rwa: The parameter & return info struct.
+ * @estr: string containing specified error type.
  * Return: 0 if no numbers in string, converted number otherwise
  *        -1 on error
  */
-void print_error(info_t *info, char *estr)
+void print_error(rwa_t rwa, char *estr)
 {
-	_eputs(info->fname);
+	_eputs(rwa->fname);
 	_eputs(": ");
-	print_d(info->line_count, STDERR_FILENO);
+	print_d(rwa->line_count, STDERR_FILENO);
 	_eputs(": ");
-	_eputs(info->argv[0]);
+	_eputs(rwa->argv[0]);
 	_eputs(": ");
 	_eputs(estr);
 }
 
 /**
- * print_d - function prints a decimal (integer) number (base 10)
+ * print_d - Function prints a decimal (integer) number (base 10).
  * @input: the input
  * @fd: the filedescriptor to write to
  *
@@ -63,7 +63,8 @@ int print_d(int input, int fd)
 		__putchar = _eputchar;
 	if (input < 0)
 	{
-		_abs_ = -input;
+
+	_abs_ = -input;
 		__putchar('-');
 		count++;
 	}
@@ -129,12 +130,12 @@ char *convert_number(long int num, int base, int flags)
  */
 void remove_comments(char *buf)
 {
-	int i;
+	int z;
 
-	for (i = 0; buf[i] != '\0'; i++)
-		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
+	for (z = 0; buf[z] != '\0'; z++)
+		if (buf[z] == '#' && (!z || buf[z - 1] == ' '))
 		{
-			buf[i] = '\0';
+			buf[z] = '\0';
 			break;
 		}
 }

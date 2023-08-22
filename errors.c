@@ -67,19 +67,19 @@ int _putfd(char c, int fd)
 /**
  * _putsfd - prints an input string
  * @str: the string to be printed
- * @fd: the filedescriptor to write to
+ * @rd: the filedescriptor to write to
  *
  * Return: the number of chars put
  */
-int _putsfd(char *str, int fd)
+int _putsfd(char *str, int rd)
 {
-	int i = 0;
+	int r = 0;
 
 	if (!str)
 		return (0);
 	while (*str)
 	{
-		i += _putfd(*str++, fd);
+		r += _putfd(*str++, rd);
 	}
-	return (i);
+	return (r);
 }
