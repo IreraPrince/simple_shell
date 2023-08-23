@@ -1,20 +1,20 @@
 #include "shell.h"
 
 /**
- * _myexit - Exits the shell.
- * @info: Structure containing potential arguments. Used to maintain.
- * constant function prototype.
+ * _myexit - function Exits the shell.
+ * @info: Structure containing potential argument.
+ *
  * Return: Exits with a given exit status.
  * (0) if info.argv[0] != "exit".
  */
 int _myexit(info_t *info)
 {
-	int exitcheck;
+	int exitshell;
 
 	if (info->argv[1]) /* Whether there is an exit arguement */
 	{
-		exitcheck = _erratoi(info->argv[1]);
-		if (exitcheck == -1)
+		exitshell = _erratoi(info->argv[1]);
+		if (exitshell == -1)
 		{
 			info->status = 2;
 			print_error(info, "Illegal number: ");
@@ -30,39 +30,39 @@ int _myexit(info_t *info)
 }
 
 /**
- * _mycd - changes the current directory of the process
- * @info: Structure containing potential arguments. Used to maintain
- * constant function prototype.
- * Return: Always 0
+ * _mycd - changes the process of current directory.
+ * @info: pointer to Structure containing potential arguments.
+ *
+ * Return: 0
  */
 int _mycd(info_t *info)
 {
-	char *s, *dir, buffer[1024];
+	char *a, *di, bufr[1024];
 	int chdir_ret;
 
-	s = getcwd(buffer, 1024);
-	if (!s)
+	a = getcwd(bufr, 1024);
+	if (!a)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!info->argv[1])
 	{
-		dir = _getenv(info, "HOME=");
-		if (!dir)
+		di = _getenv(info, "HOME=");
+		if (!di)
 			chdir_ret = /* TODO: what should this be? */
-				chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
+				chdir((di = _getenv(info, "PWD=")) ? di : "/");
 		else
-			chdir_ret = chdir(dir);
+			chdir_ret = chdir(di);
 	}
 	else if (_strcmp(info->argv[1], "-") == 0)
 	{
 		if (!_getenv(info, "OLDPWD="))
 		{
-			_puts(s);
+			_puts(a);
 			_putchar('\n');
 			return (1);
 		}
 		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
 		chdir_ret = /* TODO: what should this be? */
-			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
+			chdir((di = _getenv(info, "OLDPWD=")) ? di : "/");
 	}
 	else
 		chdir_ret = chdir(info->argv[1]);
@@ -74,16 +74,16 @@ int _mycd(info_t *info)
 	else
 	{
 		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
-		_setenv(info, "PWD", getcwd(buffer, 1024));
+		_setenv(info, "PWD", getcwd(bufr, 1024));
 	}
 	return (0);
 }
 
 /**
- * _myhelp - changes the current directory of the process
- * @bwiza: Structure containing potential arguments. Used to maintain
- * constant function prototype.
- * Return: Always 0
+ * _myhelp -process that changes current directory
+ * @bwiza: pointer to Structure containing potential arguments.
+ *
+ * Return: success 0
  */
 int _myhelp(bwiza_t *bwiza)
 {
