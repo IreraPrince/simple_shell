@@ -57,7 +57,7 @@ char **strtow(char *str, char *d)
 char **strtow2(char *str, char d)
 {
 	int p, q, r, t, numwords = 0;
-	char **s;
+	char **j;
 
 	if (str == NULL || str[0] == 0)
 		return (NULL);
@@ -67,7 +67,7 @@ char **strtow2(char *str, char d)
 			numwords++;
 	if (numwords == 0)
 		return (NULL);
-	p = malloc((1 + numwords) * sizeof(char *));
+	j = malloc((1 + numwords) * sizeof(char *));
 	if (!j)
 		return (NULL);
 	for (p = 0, q = 0; q < numwords; q++)
