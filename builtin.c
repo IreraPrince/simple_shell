@@ -81,15 +81,15 @@ int _mycd(info_t *info)
 
 /**
  * _myhelp -process that changes current directory
- * @bwiza: pointer to Structure containing potential arguments.
+ * @info: pointer to Structure containing potential arguments.
  *
  * Return: success 0
  */
-int _myhelp(bwiza_t *bwiza)
+int _myhelp(info_t *info)
 {
 	char **arg_array;
 
-	arg_array = bwiza->argv;
+	arg_array = info->argv;
 	_puts("help call works. Function not yet implemented \n");
 	if (0)
 		_puts(*arg_array); /* temp att_unused workaround */

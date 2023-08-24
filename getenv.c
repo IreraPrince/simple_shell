@@ -1,20 +1,20 @@
 #include "shell.h"
 
 /**
- * get_environ - returns the string array copy of our environ.
- * @ndimo: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * get_environ -Function that returns the string array copy of our environ.
+ * @info: Structure containing potential arguments.
+ *
+ * Return: 0
  */
-char **get_environ(ndimo_t *ndimo)
+char **get_environ(info_t *info)
 {
-	if (!ndimo->environ || ndimo->env_changed)
+	if (!info->environ || info->env_changed)
 	{
-		ndimo->environ = list_to_strings(ndimo->env);
-		ndimo->env_changed = 0;
+		info->environ = list_to_strings(info->env);
+		info->env_changed = 0;
 	}
 
-	return (ndimo->environ);
+	return (info->environ);
 }
 
 /**

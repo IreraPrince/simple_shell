@@ -70,23 +70,22 @@ int _myunsetenv(info_t *info)
 	}
 	for (t = 1; t <= info->argc; t++)
 		_unsetenv(info, info->argv[t]);
-
 	return (0);
 }
 
 /**
  * populate_env_list - function that Populates env linked list.
- * @busy: Structure containing potential arguments.
+ * @info: Structure containing potential arguments.
  *
  * Return: 0
  */
-int populate_env_list(busy_t *busy)
+int populate_env_list(info_t *info)
 {
 	list_t *node = NULL;
 	size_t r;
 
 	for (r = 0; environ[r]; r++)
 		add_node_end(&node, environ[r], 0);
-	busy->env = node;
+	info->env = node;
 	return (0);
 }

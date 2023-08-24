@@ -48,7 +48,7 @@ char *_strncat(char *dest, char *src, int n)
 		k++;
 	while (src[j] != '\0' && j < n)
 	{
-		dest[i] = src[j];
+		dest[k] = src[j];
 		k++;
 		j++;
 	}
@@ -59,16 +59,16 @@ char *_strncat(char *dest, char *src, int n)
 
 /**
  **_strchr -function  points a character in a string.
- *@x: string to be parsed.
+ *@s: string to be parsed.
  *@c: char to look for
  *Return: (x) pntr to mem. areas
  */
-char *_strchr(char *x, char c)
+char *_strchr(char *s, char c)
 {
 	do {
-		if (*x == c)
-			return (x);
-	} while (x++ != '\0');
-
+		if (*s == c)
+			return(s);
+	}
+	while (*s++ != '\0');
 	return (NULL);
 }

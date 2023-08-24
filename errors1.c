@@ -29,17 +29,17 @@ int _erratoi(char *s)
 
 /**
  * print_error -function that Prints an error message.
- * @rwa: The param & return info struct.
+ * @info: The param & return info struct.
  * @estr:pointer to string containing specified error type.
  * Return: 0 if no num in string, converted or -1 on error.
  */
-void print_error(rwa_t rwa, char *estr)
+void print_error(info_t *info, char *estr)
 {
-	_eputs(rwa->fname);
+	_eputs(info->fname);
 	_eputs(": ");
-	print_d(rwa->line_count, STDERR_FILENO);
+	print_d(info->line_count, STDERR_FILENO);
 	_eputs(": ");
-	_eputs(rwa->argv[0]);
+	_eputs(info->argv[0]);
 	_eputs(": ");
 	_eputs(estr);
 }

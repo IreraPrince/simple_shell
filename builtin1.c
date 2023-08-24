@@ -2,13 +2,13 @@
 
 /**
  * _myhistory -function Displays history list, one command by line.
- * @ngewe: Structure containing potential arguments.
+ * @info: Structure containing potential arguments.
  *
  *  Return: 0 on success
  */
-int _myhistory(ngewe_t *ngewe)
+int _myhistory(info_t *info)
 {
-	print_list(ngewe->history);
+	print_list(info->history);
 	return (0);
 }
 

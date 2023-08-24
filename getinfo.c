@@ -1,15 +1,15 @@
 #include "shell.h"
 
 /**
- * clear_mwema - initializes info_t struct
- * @mwema: struct address
+ * clear_info - initializes info_t struct
+ * @info: struct address
  */
-void clear_mwema(mwema_t *mwema)
+void clear_info(info_t *info)
 {
-	mwema->arg = NULL;
-	mwema->argv = NULL;
-	mwema->path = NULL;
-	mwema->argc = 0;
+	info->arg = NULL;
+	info->argv = NULL;
+	info->path = NULL;
+	info->argc = 0;
 }
 
 /**
